@@ -59,62 +59,34 @@ class SportzxClient:
             return r2.json().get("entries", {}).get("api_url")
         except: return None
 
+    # শুধুমাত্র এই ফাংশনটিতে পরিবর্তন করা হয়েছে (100% Raw Data-র জন্য)
     def get_json_data(self):
         api_url = self._get_api_url()
         if not api_url: return []
         
-        final_json_data = []
-        events = self._fetch_and_decrypt(f"{api_url.rstrip('/')}/events.json")
+        # 1. সার্ভার থেকে ইভেন্টের ১০০% আসল (Raw) ডেটা নিয়ে আসছি
+        raw_events = self._fetch_and_decrypt(f"{api_url.rstrip('/')}/events.json")
         
-        for event in (events if isinstance(events, list) else []):
+        if not isinstance(raw_events, list):
+            return []
+            
+        # 2. প্রতিটি ইভেন্টের জন্য তার চ্যানেলের ডেটা খুঁজছি
+        for event in raw_events:
             eid = event.get("id")
-            if not eid: continue
-            
-            # Extracting event and team details (Handling missing data safely)
-            event_info = event.get("eventInfo", {})
-            event_obj = {
-                "Event details": event.get("title", "Unknown Event"),
-                "Event logo": event.get("logo", ""),  # App may or may not provide this
-                "Team a name": event_info.get("team1Name", ""),
-                "Team a logo": event_info.get("team1Logo", ""),
-                "Team b name": event_info.get("team2Name", ""),
-                "Team b logo": event_info.get("team2Logo", ""),
-                "Stream links": []
-            }
-            
-            channels = self._fetch_and_decrypt(f"{api_url.rstrip('/')}/channels/{eid}.json")
-            
-            if isinstance(channels, list) and len(channels) > 0:
-                stream_count = 1
-                for ch in channels:
-                    stream_url = ch.get("link", "").split("|")[0].strip()
-                    api_val = ch.get("api", "")
-                    
-                    stream_obj = {
-                        "Stream Number": stream_count,
-                        "Name": ch.get("title", "Channel"),
-                        "Url": stream_url if stream_url else "Link not available yet",
-                        "Api": api_val if api_val else "No DRM Key"
-                    }
-                    event_obj["Stream links"].append(stream_obj)
-                    stream_count += 1
-            else:
-                # If no links are available yet
-                event_obj["Stream links"].append({
-                    "Stream Number": 1,
-                    "Name": "No links added yet",
-                    "Url": "",
-                    "Api": ""
-                })
+            if eid:
+                # 3. ওই ইভেন্টের চ্যানেলের ১০০% আসল (Raw) ডেটা আনছি
+                raw_channels = self._fetch_and_decrypt(f"{api_url.rstrip('/')}/channels/{eid}.json")
                 
-            final_json_data.append(event_obj)
-            
-        return final_json_data
+                # 4. হুবহু চ্যানেলের ডেটাটি "channels_data" নামের key-এর ভেতরে ঢুকিয়ে দিচ্ছি
+                event["channels_data"] = raw_channels if raw_channels else []
+                
+        # সার্ভারের পাঠানো অরিজিনাল JSON স্ট্রাকচারই রিটার্ন করা হচ্ছে
+        return raw_events
 
 def generate_json_file(data):
     with open("Sportzx.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
-    print("JSON Generated Successfully!")
+    print("100% RAW JSON Generated Successfully!")
 
 if __name__ == "__main__":
     client = SportzxClient()
