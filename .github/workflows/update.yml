@@ -20,6 +20,7 @@ jobs:
       FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
       PROJECT_NUMBER: ${{ secrets.PROJECT_NUMBER }}
       PACKAGE_NAME: ${{ secrets.PACKAGE_NAME }}
+      AES_SECRET: ${{ secrets.AES_SECRET }}   # ✅ Added
 
     steps:
       - name: Checkout Repository
@@ -43,4 +44,4 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add Sportzx.json
-          git diff-index --quiet HEAD || (git commit -m "Auto Update: Sportzx 100% Raw JSON" && git push)
+          git diff-index --quiet HEAD || (git commit -m "Auto Update: Sportzx AES Encrypted JSON" && git push)
