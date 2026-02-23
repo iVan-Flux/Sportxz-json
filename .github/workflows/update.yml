@@ -1,7 +1,7 @@
 name: Exact 5-Min Auto Update Sportzx
 
 on:
-  workflow_dispatch: # ম্যানুয়ালি রান করার জন্য (Run workflow বাটন)
+  workflow_dispatch: # ম্যানুয়ালি রান করার জন্য
   repository_dispatch:
     types: [trigger_update] # cron-job.org থেকে ধাক্কা দেওয়ার জন্য
 
@@ -27,12 +27,11 @@ jobs:
           pip install requests pycryptodome
           
       - name: Run Sportzx Python Script
-        run: sportzx.py # ⚠️ এখানে আপনার পাইথন ফাইলের নাম লিখবেন (যেমন: app.py বা scraper.py)
+        run: python sportzx.py
         
       - name: Commit and Push JSON Update
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add Sportzx.json
-          # যদি ডেটায় কোনো পরিবর্তন হয়, তবেই গিটহাবে পুশ করবে, নাহলে এরর দেবে না
           git diff-index --quiet HEAD || (git commit -m "Auto Update: Sportzx 100% Raw JSON" && git push)
