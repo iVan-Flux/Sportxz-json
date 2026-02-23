@@ -374,7 +374,7 @@
             },
             {
                 "api": "84d6fcbb68483616a6a73bc38f662e39:5cd749344b5d290de91409fe4a466314",
-                "link": "https://live-d-01-icc-we.akamaized.net/variant/v1blackout/vcg-01-d/DASH_DASH/Live/channel(vcg-01-ch-hd-02)/hdntl=exp=1771778803~acl=%2fvariant%2fv1blackout%2fvcg-01-d%2f*~id=96bc7139-3edd-47ca-8f83-cfabcae165c5~data=hdntl~hmac=b9859ac080459d4e8c7c04278a23e4bf2452cf2ca24ca5db9bbe3873fe95e9ed/manifest.mpd?vcfilter=a63e455b-9a79-47d1-a2aa-d37ef9c28abc&",
+                "link": "https://live-d-01-icc-we.akamaized.net/variant/v1blackout/vcg-01-d/DASH_DASH/Live/channel(vcg-01-ch-hd-02)/hdntl=exp=1771880301~acl=%2fvariant%2fv1blackout%2fvcg-01-d%2f*~id=96bc7139-3edd-47ca-8f83-cfabcae165c5~data=hdntl~hmac=dfe06bb67460058289730cd44a47ee40c8a87cbc76ed2683c28a56baa9a9556a/manifest.mpd?vcfilter=c7921fe9-677c-49a7-a157-43c7b0602eba&",
                 "title": "ICC TV [VPN]",
                 "type": "1"
             },
