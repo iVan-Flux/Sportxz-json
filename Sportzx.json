@@ -33,7 +33,7 @@
             {
                 "api": "de36a226483a14e6ef87545909a5c689:8d2b61820e5fefe143e910bc8f4509a5",
                 "link": "https://otte.live.cf.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/etuwxzifcf/out/v1/8b39b71cd4c942ebb2704b2e50420231/cenc.mpd",
-                "title": "SPX - FHD",
+                "title": "SPY - FHD",
                 "type": "1"
             },
             {
@@ -63,13 +63,13 @@
             {
                 "api": "",
                 "link": "https://601.xn--1000-ugoa0hsb9a0hb.com/f1.m3u8",
-                "title": "SportzX - F1",
+                "title": "SPORTIFy - F1",
                 "type": "0"
             },
             {
                 "api": "",
                 "link": "https://mainstreams.pro/hls/hbfkazbkaznc49.m3u8?|Referer=https://streamscenter.online/&Origin=https://streamscenter.online&user-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
-                "title": "SportzX Live",
+                "title": "SPORTIFy Live",
                 "type": "0"
             },
             {
@@ -200,13 +200,13 @@
             {
                 "api": "",
                 "link": "https://red1.wecanfix6.space/playlist/45500/load-playlist?|Referer=https://gooz.aapmains.net/",
-                "title": "SportzX WWE",
+                "title": "SPORTIFy WWE",
                 "type": "0"
             },
             {
                 "api": "",
                 "link": "https://601.xn--1000-ugoa0hsb9a0hb.com/wwe.m3u8",
-                "title": "SportzX FHD Server",
+                "title": "SPORTIFy FHD Server",
                 "type": "0"
             },
             {
@@ -379,7 +379,7 @@
             {
                 "api": "",
                 "link": "https://stream1.liveland.af/hls/tv/tolo-sport/chunklist3.m3u8?|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
-                "title": "SportzX LIVE",
+                "title": "SPORTIFy LIVE",
                 "type": "0"
             },
             {
@@ -642,8 +642,8 @@
         "channels_data": [
             {
                 "api": "",
-                "link": "https://video.twimg.com/amplify_video/1919602814160125952/pl/t5p2RHLI21i-hXga.m3u8?variant_version=1&tag=14",
-                "title": "SportzX Live",
+                "link": "https://raw.githubusercontent.com/TOUFIK2256/Feildfever/main/VN20251203_010347.mp4",
+                "title": "SPORTIFy Live",
                 "type": "0"
             }
         ]
