@@ -1,0 +1,5 @@
+- name: Commit and Push M3U8 File
+        run: |
+          git config --global user.name "GitHub Action Bot"
+          git config --global user.email "action@github.com"
+          git add Sportzx.m3u8
