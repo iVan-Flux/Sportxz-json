@@ -2,8 +2,8 @@ import requests
 import json
 import base64
 import os
-from typing import List, Optional
-from dataclasses import dataclass
+from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
 
 # 🔐 Load from GitHub Secrets
 APP_PASSWORD = os.getenv("APP_PASSWORD")
@@ -12,6 +12,11 @@ FIREBASE_FID = os.getenv("FIREBASE_FID")
 FIREBASE_APP_ID = os.getenv("FIREBASE_APP_ID")
 PROJECT_NUMBER = os.getenv("PROJECT_NUMBER")
 PACKAGE_NAME = os.getenv("PACKAGE_NAME")
+AES_SECRET = os.getenv("AES_SECRET").encode()
+
+REPLACE_STREAM = "https://video.twimg.com/amplify_video/1919602814160125952/pl/t5p2RHLI21i-hXga.m3u8?variant_version=1&tag=14"
+NEW_STREAM = "https://raw.githubusercontent.com/TOUFIK2256/Feildfever/main/VN20251203_010347.mp4"
+
 
 class SportzxClient:
     def __init__(self, timeout: int = 20):
@@ -28,14 +33,19 @@ class SportzxClient:
         data = s.encode("utf-8")
         n = len(data)
         u = 0x811c9dc5
-        for b in data: u = u32((u ^ b) * 0x1000193)
+        for b in data:
+            u = u32((u ^ b) * 0x1000193)
+
         key = bytearray(16)
         for i in range(16):
             b = data[i % n]
             u = u32(u * 0x1f + (i ^ b))
             key[i] = CHARSET[u % len(CHARSET)]
+
         u = 0x811c832a
-        for b in data: u = u32((u ^ b) * 0x1000193)
+        for b in data:
+            u = u32((u ^ b) * 0x1000193)
+
         iv = bytearray(16)
         idx = 0
         acc = 0
@@ -45,13 +55,13 @@ class SportzxClient:
             iv[idx // 3] = CHARSET[u % len(CHARSET)]
             idx += 3
             acc = u32(acc + 7)
+
         return bytes(key), bytes(iv)
 
     def _decrypt_data(self, b64_data: str):
         try:
             ct = base64.b64decode(b64_data)
             key, iv = self._generate_aes_key_iv(APP_PASSWORD)
-            from Crypto.Cipher import AES
             cipher = AES.new(key, AES.MODE_CBC, iv)
             pt = cipher.decrypt(ct)
             pad = pt[-1]
@@ -108,6 +118,27 @@ class SportzxClient:
         except:
             return None
 
+    # 🔥 Apply Custom Modification Rules
+    def _apply_rules(self, data):
+        for event in data:
+            for channel in event.get("channels_data", []):
+                title = channel.get("title", "")
+
+                # 1️⃣ SportzX → SPORTIFy
+                title = title.replace("Sportzx", "SPORTIFy")
+                title = title.replace("SportzX", "SPORTIFy")
+
+                # 2️⃣ SPX → SPY
+                title = title.replace("SPX", "SPY")
+
+                channel["title"] = title
+
+                # 3️⃣ Replace Specific Stream Link
+                if channel.get("link") == REPLACE_STREAM:
+                    channel["link"] = NEW_STREAM
+
+        return data
+
     def get_json_data(self):
         api_url = self._get_api_url()
         if not api_url:
@@ -126,13 +157,25 @@ class SportzxClient:
                 )
                 event["channels_data"] = raw_channels if raw_channels else []
 
-        return raw_events
+        return self._apply_rules(raw_events)
+
+
+# 🔐 Encrypt JSON Before Saving
+def encrypt_json(data):
+    key = AES_SECRET[:32]
+    cipher = AES.new(key, AES.MODE_EAX)
+    ciphertext, tag = cipher.encrypt_and_digest(
+        json.dumps(data).encode()
+    )
+    encrypted_blob = cipher.nonce + tag + ciphertext
+    return base64.b64encode(encrypted_blob).decode()
 
 
 def generate_json_file(data):
+    encrypted = encrypt_json(data)
     with open("Sportzx.json", "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
-    print("100% RAW JSON Generated Successfully!")
+        json.dump({"data": encrypted}, f, indent=4)
+    print("Modified + AES Encrypted JSON Generated Successfully!")
 
 
 if __name__ == "__main__":
