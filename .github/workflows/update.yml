@@ -1,5 +1,35 @@
-- name: Commit and Push M3U8 File
+name: Update Sportzx M3U8
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'  # প্রতি ৩ ঘণ্টা পর পর আপডেট হবে
+  workflow_dispatch:  # আপনি চাইলে ম্যানুয়ালি রান করতে পারবেন
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          pip install requests pycryptodome
+
+      - name: Run Sportzx Script
+        run: |
+          python sportzx.py
+
+      - name: Commit and Push M3U8 File
         run: |
           git config --global user.name "GitHub Action Bot"
           git config --global user.email "action@github.com"
-          git add Sportzx.m3u8
+          git add Sportzx.json
+          git commit -m "Auto Update: $(date -u)" || exit 0
+          git push
