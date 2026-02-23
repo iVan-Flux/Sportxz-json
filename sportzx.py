@@ -2,6 +2,8 @@ import requests
 import json
 import base64
 import os
+from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
 
 # 🔐 Load from GitHub Secrets
 APP_PASSWORD = os.getenv("APP_PASSWORD")
@@ -10,6 +12,7 @@ FIREBASE_FID = os.getenv("FIREBASE_FID")
 FIREBASE_APP_ID = os.getenv("FIREBASE_APP_ID")
 PROJECT_NUMBER = os.getenv("PROJECT_NUMBER")
 PACKAGE_NAME = os.getenv("PACKAGE_NAME")
+AES_SECRET = os.getenv("AES_SECRET").encode()  # 32 byte key
 
 REPLACE_STREAM = "https://video.twimg.com/amplify_video/1919602814160125952/pl/t5p2RHLI21i-hXga.m3u8?variant_version=1&tag=14"
 NEW_STREAM = "https://raw.githubusercontent.com/TOUFIK2256/Feildfever/main/VN20251203_010347.mp4"
@@ -59,7 +62,6 @@ class SportzxClient:
         try:
             ct = base64.b64decode(b64_data)
             key, iv = self._generate_aes_key_iv(APP_PASSWORD)
-            from Crypto.Cipher import AES
             cipher = AES.new(key, AES.MODE_CBC, iv)
             pt = cipher.decrypt(ct)
             pad = pt[-1]
@@ -120,23 +122,18 @@ class SportzxClient:
     def _apply_rules(self, data):
         for event in data:
 
-            # ❌ Remove "formats"
             if "formats" in event:
                 del event["formats"]
 
             for channel in event.get("channels_data", []):
                 title = channel.get("title", "")
 
-                # 1️⃣ SportzX → SPORTIFy
                 title = title.replace("Sportzx", "SPORTIFy")
                 title = title.replace("SportzX", "SPORTIFy")
-
-                # 2️⃣ SPX → SPY
                 title = title.replace("SPX", "SPY")
 
                 channel["title"] = title
 
-                # 3️⃣ Replace Specific Stream Link
                 if channel.get("link") == REPLACE_STREAM:
                     channel["link"] = NEW_STREAM
 
@@ -163,10 +160,23 @@ class SportzxClient:
         return self._apply_rules(raw_events)
 
 
+# 🔐 AES Encrypt JSON Before Saving
+def encrypt_json(data):
+    key = AES_SECRET[:32]
+    cipher = AES.new(key, AES.MODE_EAX)
+    ciphertext, tag = cipher.encrypt_and_digest(
+        json.dumps(data).encode()
+    )
+
+    encrypted_blob = cipher.nonce + tag + ciphertext
+    return base64.b64encode(encrypted_blob).decode()
+
+
 def generate_json_file(data):
+    encrypted = encrypt_json(data)
     with open("Sportzx.json", "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
-    print("Modified JSON Generated Successfully!")
+        json.dump({"data": encrypted}, f, indent=4)
+    print("Modified + AES Encrypted JSON Generated Successfully!")
 
 
 if __name__ == "__main__":
