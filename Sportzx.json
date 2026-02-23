@@ -1,0 +1,436 @@
+[
+    {
+        "Event details": "Formula 1",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "SPX - FHD",
+                "Url": "https://otte.live.cf.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/etuwxzifcf/out/v1/8b39b71cd4c942ebb2704b2e50420231/cenc.mpd",
+                "Api": "de36a226483a14e6ef87545909a5c689:8d2b61820e5fefe143e910bc8f4509a5"
+            },
+            {
+                "Stream Number": 2,
+                "Name": "Fancode AQ",
+                "Url": "https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/fdb3pubmek/out/v1/aefca6420f944a9482e117f315de535f/cenc.mpd",
+                "Api": "7e9239c1982d984a002df3ed049d0756:1b8a17598129a3618535c8fb05f103fe"
+            },
+            {
+                "Stream Number": 3,
+                "Name": "beIN SPORTS",
+                "Url": "https://unifi-live2.secureswiftcontent.com/Content/DASH/Live/channel(Bein1)/master.mpd",
+                "Api": "d48b6088253c443eb94d27cb7828f707:e9776141f9e949273a072b0e035070ab"
+            },
+            {
+                "Stream Number": 4,
+                "Name": "SKY SPORTS",
+                "Url": "https://bl.rutube.ru/livestream/e5df6984021365a58b3ba22dab2f670a/index.m3u8?s=cRTSQR0_aAkgSRFZx-X5PQ&e=2071398907&scheme=https",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 5,
+                "Name": "Sky Sport F1",
+                "Url": "https://bbb.exoadash.com/TVD201/index.mpd",
+                "Api": "0:0"
+            },
+            {
+                "Stream Number": 6,
+                "Name": "SportzX - F1",
+                "Url": "https://601.xn--1000-ugoa0hsb9a0hb.com/f1.m3u8",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 7,
+                "Name": "SportzX Live",
+                "Url": "https://mainstreams.pro/hls/hbfkazbkaznc49.m3u8?",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 8,
+                "Name": "Sky F1 SD",
+                "Url": "https://smarthard.click/hls/91LHlS9qZPK5/index.m3u8",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 9,
+                "Name": "Sky F1 DE",
+                "Url": "https://smarthard.click/hls/07HL6dzqKCAr/index.m3u8",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 10,
+                "Name": "Fox Sports - AQ",
+                "Url": "https://ottb.live.cf.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/oboxe53wyo/out/v1/f7892a9d706d419a846d738fa22ea33e/cenc.mpd",
+                "Api": "2fbdaa3bea0d0323ae011b318d1db716:8726ef7eaf5b9dce15fb6aa9f80bd53f"
+            }
+        ]
+    },
+    {
+        "Event details": "ONE Friday Fights 130",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "One Fight - AQ",
+                "Url": "https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/kkfdbi2d1c/out/v1/a5b9b32dafd5499688240287ef8c9b90/cenc.mpd",
+                "Api": "308006101c8fd0262c0f529319b9c127:37683aadc75b1450efa82d62c647984d"
+            },
+            {
+                "Stream Number": 2,
+                "Name": "Server 2",
+                "Url": "https://tglmp02.akamaized.net/out/v1/3170252e3fb0453085f2f4b0f8401a6b/manifest.mpd",
+                "Api": "60dc08aae52f4c0b806a8e43f24a12c8:30d5b579966d822b215ec51a91d8a271"
+            },
+            {
+                "Stream Number": 3,
+                "Name": "Server 3",
+                "Url": "https://v4-pan-n79-cdn-01.live.cdn.cgates.lt/live/dash/561402/index.mpd",
+                "Api": "a6b967afcb974bb5a549377b4f09befd:87d993257a099324ccd0215475fc61a0"
+            }
+        ]
+    },
+    {
+        "Event details": "WWE Raw",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "Backup SD",
+                "Url": "https://android-database1.firebase-api.com/AccessLog2/108085_HD/apache.m3u8",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 2,
+                "Name": "Tap Sport LQ",
+                "Url": "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_tapsports.mpd",
+                "Api": "eabd2d95c89e42f2b0b0b40ce4179ea0:0e7e35a07e2c12822316c0dc4873903f"
+            }
+        ]
+    },
+    {
+        "Event details": "WWE Smackdown",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "SportzX WWE",
+                "Url": "https://red1.wecanfix6.space/playlist/45500/load-playlist?",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 2,
+                "Name": "SportzX FHD Server",
+                "Url": "https://601.xn--1000-ugoa0hsb9a0hb.com/wwe.m3u8",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 3,
+                "Name": "Backup HD",
+                "Url": "https://27lftgqlgzmy.windows-devs.top/AccessLog2/83_FHD/apache.m3u8",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 4,
+                "Name": "Backup SD",
+                "Url": "https://android-database1.firebase-api.com/AccessLog2/108085_HD/apache.m3u8",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 5,
+                "Name": "USA TV (USA VPN)",
+                "Url": "https://g001-sle-us-cmaf-prd-ak.pcdn03.cssott.com/Content/CMAF_OS1-CTR-4s-v2/Live/channel(12010340-12010340-4445585a62764)/master_2hr.mpd",
+                "Api": "58551b13211b37d5b325d67e5c6cabef:3b4c3f8b4236fc57d66cdb54a606fe41"
+            }
+        ]
+    },
+    {
+        "Event details": "WWE NXT",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "Tap Sports",
+                "Url": "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_tapsports.mpd",
+                "Api": "eabd2d95c89e42f2b0b0b40ce4179ea0:0e7e35a07e2c12822316c0dc4873903f"
+            },
+            {
+                "Stream Number": 2,
+                "Name": "Backup SD",
+                "Url": "https://android-database1.firebase-api.com/AccessLog2/108085_HD/apache.m3u8",
+                "Api": "No DRM Key"
+            }
+        ]
+    },
+    {
+        "Event details": "WWE",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "TSN SPORTS",
+                "Url": "https://netskrt.live.pv-cdn.net/OTTB/lhr-nitro/live/clients/dash/enc/3n6slkgh54/out/v1/8977baf175da4b94873194613dd3fe55/cenc.mpd",
+                "Api": "daa8ea92553fd16cd6bfae2b8c582715:4042e041b5639b79b69ae07a872eef9b"
+            },
+            {
+                "Stream Number": 2,
+                "Name": "Fox Sports Premium",
+                "Url": "https://ottb.live.cf.ww.aiv-cdn.net/iad-nitro/live/clients/dash/enc/fdx74zqzhu/out/v1/7d7a8c6981a842b98a683e9fbfe51d17/cenc.mpd",
+                "Api": "9f327d24c66fbd84e15ab5c9ead7c7a4:83837185529c0c4048f81386c2d36426"
+            },
+            {
+                "Stream Number": 3,
+                "Name": "BACKUP SD",
+                "Url": "https://android-database1.firebase-api.com/AccessLog2/108087_HD/apache.m3u8",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 4,
+                "Name": "Streameast",
+                "Url": "https://red4.voyagerover.shop/playlist/45593/load-playlist",
+                "Api": "No DRM Key"
+            }
+        ]
+    },
+    {
+        "Event details": "ICC T20 WC - 01",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "PRIME VIDEO",
+                "Url": "https://netskrt.live.pv-cdn.net/OTTB/lhr-nitro/live/clients/dash/enc/wwrmho82pc/out/v1/d7130f460d41486ea7e8e3eb45f0522f/cenc.mpd",
+                "Api": "baafdb8ebcbbc0655332291da6f121da:60ac892e0ea0b2c46fc6837c97ed641a"
+            },
+            {
+                "Stream Number": 2,
+                "Name": "MyCO FHD",
+                "Url": "https://ml-pull-rtmp-pk1.myco.io/Clean1/dash/index.mpd",
+                "Api": "a4966ba118d156f99abc0b9a46bbe176:6d2a810a83250a2a0c659fd0332063dc"
+            },
+            {
+                "Stream Number": 3,
+                "Name": "Willow [Ad Free]",
+                "Url": "https://ta.bia-cf.live.pv-cdn.net/bom-nitro/live/clients/dash/enc/4cur4xsvfy/out/v1/47420260752b4443b0679661bbe9f946/cenc.mpd",
+                "Api": "adfce7c328e7f2d6300cd221734ce82f:c7ca48ae60960b3644ecbb4bd392df7e"
+            },
+            {
+                "Stream Number": 4,
+                "Name": "SKY SPORTS HD",
+                "Url": "https://bl.rutube.ru/livestream/9585fdae92af45f113fdcc9f6c4ba442/index.m3u8?s=KgZtccuHrnaljGaN7cmUwA&e=2068506973&scheme=https",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 5,
+                "Name": "ICC TV [VPN]",
+                "Url": "https://live-d-01-icc-we.akamaized.net/variant/v1blackout/vcg-01-d/DASH_DASH/Live/channel(vcg-01-ch-hd-02)/hdntl=exp=1771778803~acl=%2fvariant%2fv1blackout%2fvcg-01-d%2f*~id=96bc7139-3edd-47ca-8f83-cfabcae165c5~data=hdntl~hmac=b9859ac080459d4e8c7c04278a23e4bf2452cf2ca24ca5db9bbe3873fe95e9ed/manifest.mpd?vcfilter=a63e455b-9a79-47d1-a2aa-d37ef9c28abc&",
+                "Api": "84d6fcbb68483616a6a73bc38f662e39:5cd749344b5d290de91409fe4a466314"
+            },
+            {
+                "Stream Number": 6,
+                "Name": "MyCO SD",
+                "Url": "https://ml-pull-rtmp-pk1.myco.io/ICC/dash/index.mpd",
+                "Api": "91d2beddf3e75f68b3b5abea86ae268b:f03d7f1a26cc2f58bf2b7dadd71a06f0"
+            },
+            {
+                "Stream Number": 7,
+                "Name": "JIO HOTSTAR",
+                "Url": "https://live-pull.aisports.mobi/moviebox/device01/playlist.m3u8",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 8,
+                "Name": "SportzX LIVE",
+                "Url": "https://stream1.liveland.af/hls/tv/tolo-sport/chunklist3.m3u8?",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 9,
+                "Name": "WILLOW HD",
+                "Url": "https://cdn39591467.blazingcdn.net/dx14fhd/index.m3u8",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 10,
+                "Name": "ICC TV - HIN [VPN]",
+                "Url": "https://live-d-01-icc-we.akamaized.net/variant/v1blackout/vcg-01-d/DASH_DASH/Live/channel(vcg-01-ch-hd-04)/hdntl=exp=1771778975~acl=%2fvariant%2fv1blackout%2fvcg-01-d%2f*~id=96bc7139-3edd-47ca-8f83-cfabcae165c5~data=hdntl~hmac=2c1e4b3102ee9fd7cf495dd6e3cd90d927682fcb7bb24f7c40cd96b08eb31ca9/manifest.mpd?vcfilter=58fde2f9-e218-45a8-ae5a-d173019eddf9&",
+                "Api": "84d6fcbb68483616a6a73bc38f662e39:5cd749344b5d290de91409fe4a466314"
+            }
+        ]
+    },
+    {
+        "Event details": "Everton vs Manchester United",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "USA NETWORK",
+                "Url": "https://grand-s-v2.faggotsports.tv/pl_118/207676-6822650-1/chunklist.m3u8",
+                "Api": "No DRM Key"
+            },
+            {
+                "Stream Number": 2,
+                "Name": "SKY SPORTS NZ",
+                "Url": "https://grand-s-v2.faggotsports.tv/pl_120/207676-6819752-1/chunklist.m3u8",
+                "Api": "No DRM Key"
+            }
+        ]
+    },
+    {
+        "Event details": "Deportivo Alavés vs Girona FC",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "Laliga TV FHD",
+                "Url": "https://ottb.live.cf.ww.aiv-cdn.net/dub-nitro/live/clients/dash/enc/k0duzgfejg/out/v1/70a50b1bda944628b8e7e66ab4069419/cenc.mpd",
+                "Api": "620e51b82596475517a27aa425c52280:2b9ba811e9c5aeafc8ae1b71cdca4d6a"
+            },
+            {
+                "Stream Number": 2,
+                "Name": "Premier Sports",
+                "Url": "https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/m6sqanvm2m/out/v1/f6beb46c6e9a4132ad739f3ca27df6aa/cenc.mpd",
+                "Api": "1444f4235529f183f0a5a486befe9cdb:e5e3fec67a1bb3472a2089c8a0a2557f"
+            }
+        ]
+    },
+    {
+        "Event details": "Fiorentina vs Pisa",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "beIN ENGLISH",
+                "Url": "https://aba5sdmaaaaaaaamhq2w5oosrf5ae.otte.live.cf.ww.aiv-cdn.net/syd-nitro/live/clients/dash/enc/q4u5nwaogz/out/v1/18de6d3e65934f3a8de4358e69eab86c/cenc.mpd",
+                "Api": "7995c724a13748ed970840a8ab5bb9b3:67bdaf1e2175b9ff682fcdf0e2354b1e"
+            },
+            {
+                "Stream Number": 2,
+                "Name": "CBS Golazo",
+                "Url": "https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/rbem8rorcw/out/v1/5318821e2c3c44c2a439681b9aa86e9b/cenc.mpd",
+                "Api": "d9623774ac5c8c351aafe97c5fe70267:5164e6d05164a2d65fa8fcc962aa4861"
+            },
+            {
+                "Stream Number": 3,
+                "Name": "Fox Deportes",
+                "Url": "https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/vkpoljjpkj/out/v1/502bcf68b3514cd28a220e6f0a43816f/cenc.mpd",
+                "Api": "d1a163914db8ffad2c3e94f979896a0d:9728800a3959aafdd5b0bcfbf3768811"
+            }
+        ]
+    },
+    {
+        "Event details": "Bologna vs Udinese",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "beIN ENGLISH",
+                "Url": "https://aba5sdmaaaaaaaamhq2w5oosrf5ae.otte.live.cf.ww.aiv-cdn.net/syd-nitro/live/clients/dash/enc/q4u5nwaogz/out/v1/18de6d3e65934f3a8de4358e69eab86c/cenc.mpd",
+                "Api": "7995c724a13748ed970840a8ab5bb9b3:67bdaf1e2175b9ff682fcdf0e2354b1e"
+            },
+            {
+                "Stream Number": 2,
+                "Name": "CBS Golazo",
+                "Url": "https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/rbem8rorcw/out/v1/5318821e2c3c44c2a439681b9aa86e9b/cenc.mpd",
+                "Api": "d9623774ac5c8c351aafe97c5fe70267:5164e6d05164a2d65fa8fcc962aa4861"
+            }
+        ]
+    },
+    {
+        "Event details": "Fenerbahçe vs Kasımpaşa",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "beIN SPORTS",
+                "Url": "https://smarthard.click/hls/hhx33tWwGEeW/index.m3u8",
+                "Api": "No DRM Key"
+            }
+        ]
+    },
+    {
+        "Event details": "Mohun Bagan vs Chennaiyin",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "FANCODE FHD",
+                "Url": "https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/inpyms8ezu/out/v1/1084d5c9a97a4c5b9f9554c88f486646/cenc.mpd",
+                "Api": "065051b99bf5cf8d9a3bde5cbde6aaf9:214bd176832872339ce184338320f9a2"
+            },
+            {
+                "Stream Number": 2,
+                "Name": "FANCODE - SD",
+                "Url": "https://abmvm23aaaaaaaamjmmec4lqatq7x.ottb.live.cf.ww.aiv-cdn.net/sin-nitro/live/clients/dash-sd/enc/v8g0dlo4z8/out/v1/946019f85dc64ae99ff9ce64a9727a62/cenc-sd.mpd",
+                "Api": "5689304538fa9f3bb3da99c939a2ad4f:6907c88ed8ebdd35a2fa80b9684715e1"
+            }
+        ]
+    },
+    {
+        "Event details": "Walsall vs Milton Keynes Dons",
+        "Event logo": "",
+        "Team a name": "",
+        "Team a logo": "",
+        "Team b name": "",
+        "Team b logo": "",
+        "Stream links": [
+            {
+                "Stream Number": 1,
+                "Name": "SportzX Live",
+                "Url": "https://video.twimg.com/amplify_video/1919602814160125952/pl/t5p2RHLI21i-hXga.m3u8?variant_version=1&tag=14",
+                "Api": "No DRM Key"
+            }
+        ]
+    }
+]
