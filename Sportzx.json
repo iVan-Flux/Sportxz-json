@@ -337,11 +337,9 @@
         "publish": "1",
         "formats": [
             "PRIME VIDEO",
-            "MyCO FHD",
             "Willow [Ad Free]",
             "SKY SPORTS HD",
             "ICC TV [VPN]",
-            "MyCO SD",
             "JIO HOTSTAR",
             "SportzX LIVE",
             "WILLOW HD",
@@ -404,7 +402,7 @@
             },
             {
                 "api": "84d6fcbb68483616a6a73bc38f662e39:5cd749344b5d290de91409fe4a466314",
-                "link": "https://live-d-01-icc-we.akamaized.net/variant/v1blackout/vcg-01-d/DASH_DASH/Live/channel(vcg-01-ch-hd-04)/hdntl=exp=1771778975~acl=%2fvariant%2fv1blackout%2fvcg-01-d%2f*~id=96bc7139-3edd-47ca-8f83-cfabcae165c5~data=hdntl~hmac=2c1e4b3102ee9fd7cf495dd6e3cd90d927682fcb7bb24f7c40cd96b08eb31ca9/manifest.mpd?vcfilter=58fde2f9-e218-45a8-ae5a-d173019eddf9&",
+                "link": "https://live-d-01-icc-we.akamaized.net/variant/v1blackout/vcg-01-d/DASH_DASH/Live/channel(vcg-01-ch-hd-03)/hdntl=exp=1771880414~acl=%2fvariant%2fv1blackout%2fvcg-01-d%2f*~id=96bc7139-3edd-47ca-8f83-cfabcae165c5~data=hdntl~hmac=ffc5ca1abf4da62bcb07f29c52cef066e47d810b62a75650e91dd1fb9d77a16a/manifest.mpd?vcfilter=7fa27f85-8cbe-4fcd-8662-dbdbd9243dd2&",
                 "title": "ICC TV - HIN [VPN]",
                 "type": "1"
             }
