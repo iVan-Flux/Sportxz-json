@@ -1,34 +1,43 @@
 name: Exact 5-Min Auto Update Sportzx
 
 on:
-  workflow_dispatch: # ম্যানুয়ালি রান করার জন্য
+  workflow_dispatch:
   repository_dispatch:
-    types: [trigger_update] # cron-job.org থেকে ধাক্কা দেওয়ার জন্য
+    types: [trigger_update]
 
 permissions:
-  contents: write # ফাইলে পরিবর্তন করে পুশ করার পারমিশন
+  contents: write
 
 jobs:
   update-json:
     runs-on: ubuntu-latest
-    
+
+    # 🔐 Inject GitHub Secrets Here
+    env:
+      APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+      FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+      FIREBASE_FID: ${{ secrets.FIREBASE_FID }}
+      FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+      PROJECT_NUMBER: ${{ secrets.PROJECT_NUMBER }}
+      PACKAGE_NAME: ${{ secrets.PACKAGE_NAME }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-          
+
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests pycryptodome
-          
+
       - name: Run Sportzx Python Script
         run: python sportzx.py
-        
+
       - name: Commit and Push JSON Update
         run: |
           git config --local user.email "action@github.com"
