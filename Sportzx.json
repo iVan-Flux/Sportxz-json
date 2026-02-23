@@ -17,18 +17,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "SPX - FHD",
-            "Fancode AQ",
-            "beIN SPORTS",
-            "SKY SPORTS",
-            "Sky Sport F1",
-            "SportzX - F1",
-            "SportzX Live",
-            "Sky F1 SD",
-            "Sky F1 DE",
-            "Fox Sports - AQ"
-        ],
         "channels_data": [
             {
                 "api": "de36a226483a14e6ef87545909a5c689:8d2b61820e5fefe143e910bc8f4509a5",
@@ -109,11 +97,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "One Fight - AQ",
-            "Server 2",
-            "Server 3"
-        ],
         "channels_data": [
             {
                 "api": "308006101c8fd0262c0f529319b9c127:37683aadc75b1450efa82d62c647984d",
@@ -153,10 +136,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "Backup SD",
-            "Tap Sport LQ"
-        ],
         "channels_data": [
             {
                 "api": "",
@@ -189,13 +168,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "SportzX WWE",
-            "SportzX FHD Server",
-            "Backup HD",
-            "Backup SD",
-            "USA TV (USA VPN)"
-        ],
         "channels_data": [
             {
                 "api": "",
@@ -247,10 +219,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "Tap Sports",
-            "Backup SD"
-        ],
         "channels_data": [
             {
                 "api": "eabd2d95c89e42f2b0b0b40ce4179ea0:0e7e35a07e2c12822316c0dc4873903f",
@@ -284,12 +252,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "TSN SPORTS",
-            "Fox Sports Premium",
-            "BACKUP SD",
-            "Streameast"
-        ],
         "channels_data": [
             {
                 "api": "daa8ea92553fd16cd6bfae2b8c582715:4042e041b5639b79b69ae07a872eef9b",
@@ -335,16 +297,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "PRIME VIDEO",
-            "Willow [Ad Free]",
-            "SKY SPORTS HD",
-            "ICC TV [VPN]",
-            "JIO HOTSTAR",
-            "SportzX LIVE",
-            "WILLOW HD",
-            "ICC TV - HIN [VPN]"
-        ],
         "channels_data": [
             {
                 "api": "baafdb8ebcbbc0655332291da6f121da:60ac892e0ea0b2c46fc6837c97ed641a",
@@ -414,10 +366,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "USA NETWORK",
-            "SKY SPORTS NZ"
-        ],
         "channels_data": [
             {
                 "api": "",
@@ -451,10 +399,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "Laliga TV FHD",
-            "Premier Sports"
-        ],
         "channels_data": [
             {
                 "api": "620e51b82596475517a27aa425c52280:2b9ba811e9c5aeafc8ae1b71cdca4d6a",
@@ -488,11 +432,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "beIN ENGLISH",
-            "CBS Golazo",
-            "Fox Deportes"
-        ],
         "channels_data": [
             {
                 "api": "7995c724a13748ed970840a8ab5bb9b3:67bdaf1e2175b9ff682fcdf0e2354b1e",
@@ -532,10 +471,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "beIN ENGLISH",
-            "CBS Golazo"
-        ],
         "channels_data": [
             {
                 "api": "7995c724a13748ed970840a8ab5bb9b3:67bdaf1e2175b9ff682fcdf0e2354b1e",
@@ -569,9 +504,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "beIN SPORTS"
-        ],
         "channels_data": [
             {
                 "api": "",
@@ -599,10 +531,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "FANCODE FHD",
-            "FANCODE - SD"
-        ],
         "channels_data": [
             {
                 "api": "7e9239c1982d984a002df3ed049d0756:1b8a17598129a3618535c8fb05f103fe",
@@ -636,9 +564,6 @@
         },
         "adsLimit": "0",
         "publish": "1",
-        "formats": [
-            "SportzX Live"
-        ],
         "channels_data": [
             {
                 "api": "",
