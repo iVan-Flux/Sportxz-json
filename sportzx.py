@@ -116,9 +116,14 @@ class SportzxClient:
         except:
             return None
 
-    # 🔥 Apply 3 Custom Rules
+    # 🔥 Apply Rules + Remove formats
     def _apply_rules(self, data):
         for event in data:
+
+            # ❌ Remove "formats"
+            if "formats" in event:
+                del event["formats"]
+
             for channel in event.get("channels_data", []):
                 title = channel.get("title", "")
 
