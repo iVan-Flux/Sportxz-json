@@ -353,14 +353,8 @@
                 "type": "1"
             },
             {
-                "api": "a4966ba118d156f99abc0b9a46bbe176:6d2a810a83250a2a0c659fd0332063dc",
-                "link": "https://ml-pull-rtmp-pk1.myco.io/Clean1/dash/index.mpd",
-                "title": "MyCO FHD",
-                "type": "1"
-            },
-            {
-                "api": "adfce7c328e7f2d6300cd221734ce82f:c7ca48ae60960b3644ecbb4bd392df7e",
-                "link": "https://ta.bia-cf.live.pv-cdn.net/bom-nitro/live/clients/dash/enc/4cur4xsvfy/out/v1/47420260752b4443b0679661bbe9f946/cenc.mpd",
+                "api": "596a430a5ed4dda9e6e312637ea4ccc1:20cf10525dcc0cb9b373cc8749e3fc78",
+                "link": "https://a96aivottlinear-a.akamaihd.net/OTTB/iad-nitro/enc/vghnthd5a3/out/v1/ad28e7d655014204843fcde399045299/cenc.mpd",
                 "title": "Willow [Ad Free]",
                 "type": "1"
             },
@@ -374,12 +368,6 @@
                 "api": "84d6fcbb68483616a6a73bc38f662e39:5cd749344b5d290de91409fe4a466314",
                 "link": "https://live-d-01-icc-we.akamaized.net/variant/v1blackout/vcg-01-d/DASH_DASH/Live/channel(vcg-01-ch-hd-02)/hdntl=exp=1771880301~acl=%2fvariant%2fv1blackout%2fvcg-01-d%2f*~id=96bc7139-3edd-47ca-8f83-cfabcae165c5~data=hdntl~hmac=dfe06bb67460058289730cd44a47ee40c8a87cbc76ed2683c28a56baa9a9556a/manifest.mpd?vcfilter=c7921fe9-677c-49a7-a157-43c7b0602eba&",
                 "title": "ICC TV [VPN]",
-                "type": "1"
-            },
-            {
-                "api": "91d2beddf3e75f68b3b5abea86ae268b:f03d7f1a26cc2f58bf2b7dadd71a06f0",
-                "link": "https://ml-pull-rtmp-pk1.myco.io/ICC/dash/index.mpd",
-                "title": "MyCO SD",
                 "type": "1"
             },
             {
