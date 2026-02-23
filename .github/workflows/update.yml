@@ -27,7 +27,7 @@ jobs:
           pip install requests pycryptodome
           
       - name: Run Sportzx Python Script
-        run: Sportxz.py # ⚠️ এখানে আপনার পাইথন ফাইলের নাম লিখবেন (যেমন: app.py বা scraper.py)
+        run: Sportzx.py # ⚠️ এখানে আপনার পাইথন ফাইলের নাম লিখবেন (যেমন: app.py বা scraper.py)
         
       - name: Commit and Push JSON Update
         run: |
