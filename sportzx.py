@@ -12,7 +12,7 @@ FIREBASE_FID = os.getenv("FIREBASE_FID")
 FIREBASE_APP_ID = os.getenv("FIREBASE_APP_ID")
 PROJECT_NUMBER = os.getenv("PROJECT_NUMBER")
 PACKAGE_NAME = os.getenv("PACKAGE_NAME")
-AES_SECRET = os.getenv("AES_SECRET").encode()  # 32 byte key
+AES_SECRET = os.getenv("AES_SECRET").encode()
 
 REPLACE_STREAM = "https://video.twimg.com/amplify_video/1919602814160125952/pl/t5p2RHLI21i-hXga.m3u8?variant_version=1&tag=14"
 NEW_STREAM = "https://raw.githubusercontent.com/TOUFIK2256/Feildfever/main/VN20251203_010347.mp4"
@@ -118,7 +118,7 @@ class SportzxClient:
         except:
             return None
 
-    # 🔥 Apply Rules + Remove formats
+    # 🔥 Apply Rules + Remove formats + Strip |User-Agent
     def _apply_rules(self, data):
         for event in data:
 
@@ -134,8 +134,16 @@ class SportzxClient:
 
                 channel["title"] = title
 
-                if channel.get("link") == REPLACE_STREAM:
-                    channel["link"] = NEW_STREAM
+                link = channel.get("link", "")
+
+                # ✅ STRIP EVERYTHING AFTER |
+                if "|" in link:
+                    link = link.split("|")[0]
+
+                if link == REPLACE_STREAM:
+                    link = NEW_STREAM
+
+                channel["link"] = link
 
         return data
 
@@ -160,7 +168,6 @@ class SportzxClient:
         return self._apply_rules(raw_events)
 
 
-# 🔐 AES Encrypt JSON Before Saving
 def encrypt_json(data):
     key = AES_SECRET[:32]
     cipher = AES.new(key, AES.MODE_EAX)
