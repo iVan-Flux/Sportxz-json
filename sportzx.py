@@ -133,7 +133,6 @@ class SportzxClient:
 
                 link = channel.get("link", "")
 
-                # Strip everything after |
                 if "|" in link:
                     link = link.split("|")[0]
 
@@ -166,30 +165,34 @@ class SportzxClient:
 
 
 def encrypt_json(data):
+
+    # 🔥 HEADER ADDED INSIDE ENCRYPTED DATA
+    now = datetime.now().strftime("%I:%M:%S %p %d-%m-%Y")
+
+    wrapped_data = {
+        "AUTHOR": "iVan_FLUx",
+        "TELEGRAM": "https://t.me/iVan_flux",
+        "Last update time": now,
+        "events": data
+    }
+
     key = AES_SECRET[:32]
     cipher = AES.new(key, AES.MODE_EAX)
     ciphertext, tag = cipher.encrypt_and_digest(
-        json.dumps(data).encode()
+        json.dumps(wrapped_data).encode()
     )
+
     encrypted_blob = cipher.nonce + tag + ciphertext
     return base64.b64encode(encrypted_blob).decode()
 
 
 def generate_json_file(data):
-
-    now = datetime.now().strftime("%I:%M:%S %p %d-%m-%Y")
-
-    final_output = {
-        "AUTHOR": "iVan_FLUx",
-        "TELEGRAM": "https://t.me/iVan_flux",
-        "Last update time": now,
-        "events": data   # ✅ Old root array wrapped here
-    }
+    encrypted = encrypt_json(data)
 
     with open("Sportzx.json", "w", encoding="utf-8") as f:
-        json.dump(final_output, f, indent=4)
+        json.dump({"data": encrypted}, f, indent=4)
 
-    print("JSON Generated Successfully With Header!")
+    print("Modified + AES Encrypted JSON Generated Successfully!")
 
 
 if __name__ == "__main__":
