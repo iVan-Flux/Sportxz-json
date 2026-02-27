@@ -2,7 +2,7 @@ import requests
 import json
 import base64
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 from Crypto.Cipher import AES
 
 # 🔐 Load from GitHub Secrets
@@ -132,7 +132,6 @@ class SportzxClient:
                 channel["title"] = title
 
                 link = channel.get("link", "")
-
                 if "|" in link:
                     link = link.split("|")[0]
 
@@ -166,8 +165,10 @@ class SportzxClient:
 
 def encrypt_json(data):
 
-    # 🔥 HEADER ADDED INSIDE ENCRYPTED DATA
-    now = datetime.now().strftime("%I:%M:%S %p %d-%m-%Y")
+    # 🔥 IST TIME FIX (UTC + 5:30)
+    utc_now = datetime.utcnow()
+    ist_now = utc_now + timedelta(hours=5, minutes=30)
+    now = ist_now.strftime("%I:%M:%S %p %d-%m-%Y")
 
     wrapped_data = {
         "AUTHOR": "iVan_FLUx",
