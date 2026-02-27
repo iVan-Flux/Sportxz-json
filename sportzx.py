@@ -133,7 +133,7 @@ class SportzxClient:
 
                 link = channel.get("link", "")
 
-                # Strip anything after |
+                # Strip everything after |
                 if "|" in link:
                     link = link.split("|")[0]
 
@@ -176,22 +176,20 @@ def encrypt_json(data):
 
 
 def generate_json_file(data):
-    encrypted = encrypt_json(data)
 
-    # ✅ NEW HEADER PART (ONLY ADDITION)
     now = datetime.now().strftime("%I:%M:%S %p %d-%m-%Y")
 
     final_output = {
         "AUTHOR": "iVan_FLUx",
         "TELEGRAM": "https://t.me/iVan_flux",
         "Last update time": now,
-        "data": encrypted
+        "events": data   # ✅ Old root array wrapped here
     }
 
     with open("Sportzx.json", "w", encoding="utf-8") as f:
         json.dump(final_output, f, indent=4)
 
-    print("Modified + AES Encrypted JSON Generated Successfully!")
+    print("JSON Generated Successfully With Header!")
 
 
 if __name__ == "__main__":
