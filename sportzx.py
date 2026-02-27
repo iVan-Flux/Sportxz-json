@@ -2,8 +2,8 @@ import requests
 import json
 import base64
 import os
+from datetime import datetime
 from Crypto.Cipher import AES
-from Crypto.Random import get_random_bytes
 
 # 🔐 Load from GitHub Secrets
 APP_PASSWORD = os.getenv("APP_PASSWORD")
@@ -118,7 +118,6 @@ class SportzxClient:
         except:
             return None
 
-    # 🔥 Apply Rules + Remove formats + Strip |User-Agent
     def _apply_rules(self, data):
         for event in data:
 
@@ -127,16 +126,14 @@ class SportzxClient:
 
             for channel in event.get("channels_data", []):
                 title = channel.get("title", "")
-
                 title = title.replace("Sportzx", "SPORTIFy")
                 title = title.replace("SportzX", "SPORTIFy")
                 title = title.replace("SPX", "SPY")
-
                 channel["title"] = title
 
                 link = channel.get("link", "")
 
-                # ✅ STRIP EVERYTHING AFTER |
+                # Strip anything after |
                 if "|" in link:
                     link = link.split("|")[0]
 
@@ -174,15 +171,26 @@ def encrypt_json(data):
     ciphertext, tag = cipher.encrypt_and_digest(
         json.dumps(data).encode()
     )
-
     encrypted_blob = cipher.nonce + tag + ciphertext
     return base64.b64encode(encrypted_blob).decode()
 
 
 def generate_json_file(data):
     encrypted = encrypt_json(data)
+
+    # ✅ NEW HEADER PART (ONLY ADDITION)
+    now = datetime.now().strftime("%I:%M:%S %p %d-%m-%Y")
+
+    final_output = {
+        "AUTHOR": "iVan_FLUx",
+        "TELEGRAM": "https://t.me/iVan_flux",
+        "Last update time": now,
+        "data": encrypted
+    }
+
     with open("Sportzx.json", "w", encoding="utf-8") as f:
-        json.dump({"data": encrypted}, f, indent=4)
+        json.dump(final_output, f, indent=4)
+
     print("Modified + AES Encrypted JSON Generated Successfully!")
 
 
