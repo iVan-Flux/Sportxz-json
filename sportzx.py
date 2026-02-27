@@ -132,7 +132,9 @@ class SportzxClient:
                 channel["title"] = title
 
                 link = channel.get("link", "")
-                if "|" in link:
+
+                # ✅ Strip ONLY for .mpd links
+                if ".mpd" in link and "|" in link:
                     link = link.split("|")[0]
 
                 if link == REPLACE_STREAM:
@@ -165,7 +167,7 @@ class SportzxClient:
 
 def encrypt_json(data):
 
-    # 🔥 IST TIME FIX (UTC + 5:30)
+    # ✅ IST Time Fix (UTC + 5:30)
     utc_now = datetime.utcnow()
     ist_now = utc_now + timedelta(hours=5, minutes=30)
     now = ist_now.strftime("%I:%M:%S %p %d-%m-%Y")
