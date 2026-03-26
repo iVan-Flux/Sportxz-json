@@ -162,6 +162,33 @@ class SportzxClient:
                 )
                 event["channels_data"] = raw_channels if raw_channels else []
 
+        # --- নতুন যোগ করা ম্যানুয়াল ওভাররাইড লজিক ---
+        manual_file = "manual_data.json"
+        if os.path.exists(manual_file):
+            try:
+                with open(manual_file, "r") as f:
+                    manual = json.load(f)
+                
+                # ১. ডিলিট লজিক
+                delete_ids = manual.get("delete", [])
+                raw_events = [ev for ev in raw_events if ev.get("id") not in delete_ids]
+
+                # ২. এডিট ও অ্যাড লজিক
+                manual_events = manual.get("manual_events", [])
+                for m_ev in manual_events:
+                    m_id = m_ev.get("id")
+                    # যদি আইডি মিলে যায় তবে রিপ্লেস (Edit), নাহলে নতুন হিসেবে যোগ (Add)
+                    found = False
+                    for i, ev in enumerate(raw_events):
+                        if ev.get("id") == m_id:
+                            raw_events[i] = m_ev
+                            found = True
+                            break
+                    if not found:
+                        raw_events.append(m_ev)
+            except Exception as e:
+                print(f"Error applying manual edits: {e}")
+
         return self._apply_rules(raw_events)
 
 
