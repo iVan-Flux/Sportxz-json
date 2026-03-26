@@ -229,16 +229,7 @@
                     "title": "WILLOW HD",
                     "link": "https://a96aivottlinear-a.akamaihd.net/OTTB/iad-nitro/enc/ued7n6of0i/out/v1/3546dc4b9a1f4526bf3362db59baee08/cenc.mpd",
                     "api": "8cb27e0a167938efd74a91837f9a2a6f:8b4126342c1a6ecf7b960fec34c633b9",
-                    "type": "0"
-                }
-            ],
-            "links": [
-                {
-                    "name": "WILLOW HD",
-                    "title": "WILLOW HD",
-                    "link": "https://a96aivottlinear-a.akamaihd.net/OTTB/iad-nitro/enc/ued7n6of0i/out/v1/3546dc4b9a1f4526bf3362db59baee08/cenc.mpd",
-                    "api": "8cb27e0a167938efd74a91837f9a2a6f:8b4126342c1a6ecf7b960fec34c633b9",
-                    "type": "0"
+                    "type": "1"
                 }
             ]
         }
