@@ -133,9 +133,8 @@ class SportzxClient:
 
                 link = channel.get("link", "")
 
-                # ✅ Strip ONLY for .mpd links
-                if ".mpd" in link and "|" in link:
-                    link = link.split("|")[0]
+                # ✅ লজিক পরিবর্তন: এখন আর পাইপ (|) চিহ্নের পরের অংশ ডিলিট করা হবে না।
+                # লিঙ্ক যা আছে তাই থাকবে।
 
                 if link == REPLACE_STREAM:
                     link = NEW_STREAM
@@ -162,22 +161,19 @@ class SportzxClient:
                 )
                 event["channels_data"] = raw_channels if raw_channels else []
 
-        # --- নতুন যোগ করা ম্যানুয়াল ওভাররাইড লজিক ---
+        # --- ম্যানুয়াল ওভাররাইড লজিক ---
         manual_file = "manual_data.json"
         if os.path.exists(manual_file):
             try:
                 with open(manual_file, "r") as f:
                     manual = json.load(f)
                 
-                # ১. ডিলিট লজিক
                 delete_ids = manual.get("delete", [])
                 raw_events = [ev for ev in raw_events if ev.get("id") not in delete_ids]
 
-                # ২. এডিট ও অ্যাড লজিক
                 manual_events = manual.get("manual_events", [])
                 for m_ev in manual_events:
                     m_id = m_ev.get("id")
-                    # যদি আইডি মিলে যায় তবে রিপ্লেস (Edit), নাহলে নতুন হিসেবে যোগ (Add)
                     found = False
                     for i, ev in enumerate(raw_events):
                         if ev.get("id") == m_id:
@@ -194,7 +190,7 @@ class SportzxClient:
 
 def encrypt_json(data):
 
-    # ✅ IST Time Fix (UTC + 5:30)
+    # ✅ IST Time Fix
     utc_now = datetime.utcnow()
     ist_now = utc_now + timedelta(hours=5, minutes=30)
     now = ist_now.strftime("%I:%M:%S %p %d-%m-%Y")
