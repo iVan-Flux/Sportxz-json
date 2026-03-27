@@ -29,7 +29,7 @@ class SportzxClient:
 
     def _generate_aes_key_iv(self, s: str):
         CHARSET = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+!@#$%&="
-        def u32(x: int): return x & 0xFFFFFFFF
+        u32 = lambda x: x & 0xFFFFFFFF
         data = s.encode("utf-8"); n = len(data); u = 0x811c9dc5
         for b in data: u = u32((u ^ b) * 0x1000193)
         key = bytearray(16)
@@ -71,10 +71,17 @@ class SportzxClient:
     def _apply_rules(self, data):
         for event in data:
             if "formats" in event: del event["formats"]
+            # ইভেন্ট টাইটেল রিপ্লেস
+            if "title" in event:
+                event["title"] = event["title"].replace("Sportzx", "SPORTIFy").replace("SportzX", "SPORTIFy")
+
             for channel in event.get("channels_data", []):
-                channel["title"] = channel.get("title", "").replace("Sportzx", "SPORTIFy").replace("SPX", "SPY")
-                
-                # API Key ডিকোডিং লজিক (Base64 fix)
+                # চ্যানেল টাইটেল রিপ্লেস (বড় হাতের X সহ সব ভেরিয়েশন)
+                title = channel.get("title", "")
+                title = title.replace("Sportzx", "SPORTIFy").replace("SportzX", "SPORTIFy").replace("SPX", "SPY")
+                channel["title"] = title
+
+                # API Key Base64 ডিকোডিং
                 api_val = channel.get("api", "")
                 if api_val and len(api_val) > 20:
                     try:
@@ -82,7 +89,7 @@ class SportzxClient:
                         if ":" in decoded: channel["api"] = decoded
                     except: pass
 
-                # লিঙ্ক প্রসেসিং (Raw লিঙ্ক অক্ষত রাখা)
+                # লিঙ্ক প্রসেসিং (raw লিঙ্ক, কোনো কাটাকুটি হবে না)
                 link = channel.get("link", "")
                 if link == REPLACE_STREAM: link = NEW_STREAM
                 channel["link"] = link
@@ -99,50 +106,39 @@ class SportzxClient:
             if eid:
                 event["channels_data"] = self._fetch_and_decrypt(f"{api_url.rstrip('/')}/channels/{eid}.json")
 
-        # --- 🔄 EndTime ভিত্তিক অটো-ডিলিট এবং মার্জ লজিক ---
+        # --- 🔄 EndTime অটো-ডিলিট ও মার্জ লজিক ---
         manual_file = "manual_data.json"
         if os.path.exists(manual_file):
             try:
                 with open(manual_file, "r") as f: manual = json.load(f)
-                
                 manual_events = manual.get("manual_events", [])
-                now = datetime.utcnow()
-                cleaned_manual_events = []
+                now_utc = datetime.utcnow()
+                cleaned_manual = []
 
                 for m_ev in manual_events:
-                    # ১. টাইম চেক লজিক (UTC)
                     end_time_str = m_ev.get("eventInfo", {}).get("endTime", "")
                     try:
-                        # ফরম্যাট: 2026/03/26 17:45:00 +0000
                         end_time_dt = datetime.strptime(end_time_str, "%Y/%m/%d %H:%M:%S +0000")
-                        if now < end_time_dt:
-                            cleaned_manual_events.append(m_ev)
-                        else:
-                            print(f"Match {m_ev.get('id')} expired and deleted from memory.")
-                    except:
-                        cleaned_manual_events.append(m_ev) # ফরম্যাট ভুল হলে ডিলিট করবে না
+                        if now_utc < end_time_dt: cleaned_manual.append(m_ev)
+                    except: cleaned_manual.append(m_ev)
 
-                # ২. ডাটা মার্জ করা
+                # মার্জিং
                 live_ids = [str(ev.get("id")) for ev in raw_events]
-                for m_ev in cleaned_manual_events:
+                for m_ev in cleaned_manual:
                     m_id = str(m_ev.get("id"))
                     if m_id in live_ids:
                         for i, ev in enumerate(raw_events):
-                            if str(ev.get("id")) == m_id:
-                                raw_events[i] = m_ev # রিপ্লেস উইথ ম্যানুয়াল ডাটা
-                    else:
-                        raw_events.append(m_ev) # নতুন ম্যাচ হিসেবে যোগ
+                            if str(ev.get("id")) == m_id: raw_events[i] = m_ev
+                    else: raw_events.append(m_ev)
 
-                # ৩. ডিলিট লিস্ট প্রসেস করা
+                # ডিলিট লিস্ট ফিল্টার
                 delete_ids = [str(d) for d in manual.get("delete", [])]
                 raw_events = [ev for ev in raw_events if str(ev.get("id")) not in delete_ids]
 
-                # ৪. ম্যানুয়াল ফাইলটি ক্লিন করে আপডেট করা (যাতে GitHub-এ সেভ হয়)
-                manual["manual_events"] = cleaned_manual_events
-                with open(manual_file, "w") as f:
-                    json.dump(manual, f, indent=4)
-
-            except Exception as e: print(f"Manual Sync Error: {e}")
+                # ম্যানুয়াল ফাইল আপডেট (GitHub Persist এর জন্য)
+                manual["manual_events"] = cleaned_manual
+                with open(manual_file, "w") as f: json.dump(manual, f, indent=4)
+            except: pass
 
         return self._apply_rules(raw_events)
 
@@ -160,4 +156,4 @@ if __name__ == "__main__":
     if data:
         with open("Sportzx.json", "w", encoding="utf-8") as f:
             json.dump({"data": encrypt_json(data)}, f, indent=4)
-        print("Final Sync & Auto-Cleanup Completed!")
+        print("Everything Fixed & Synced Successfully!")
