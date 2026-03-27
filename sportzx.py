@@ -5,7 +5,7 @@ import os
 from datetime import datetime, timedelta
 from Crypto.Cipher import AES
 
-# 🔐 Load from GitHub Secrets
+# 🔐 GitHub Secrets
 APP_PASSWORD = os.getenv("APP_PASSWORD")
 FIREBASE_API_KEY = os.getenv("FIREBASE_API_KEY")
 FIREBASE_FID = os.getenv("FIREBASE_FID")
@@ -17,30 +17,22 @@ AES_SECRET = os.getenv("AES_SECRET").encode()
 REPLACE_STREAM = "https://video.twimg.com/amplify_video/1919602814160125952/pl/t5p2RHLI21i-hXga.m3u8?variant_version=1&tag=14"
 NEW_STREAM = "https://raw.githubusercontent.com/TOUFIK2256/Feildfever/main/VN20251203_010347.mp4"
 
-
 class SportzxClient:
-    def __init__(self, timeout: int = 20):
-        self.timeout = timeout
+    def __init__(self):
         self.session = requests.Session()
-        self.session.headers.update({
-            "User-Agent": "Dalvik/2.1.0 (Linux; Android 13)",
-            "Accept-Encoding": "gzip"
-        })
+        self.session.headers.update({"User-Agent": "Dalvik/2.1.0 (Linux; Android 13)"})
 
     def _generate_aes_key_iv(self, s: str):
         CHARSET = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+!@#$%&="
-        def u32(x: int): return x & 0xFFFFFFFF
+        u32 = lambda x: x & 0xFFFFFFFF
         data = s.encode("utf-8"); n = len(data); u = 0x811c9dc5
         for b in data: u = u32((u ^ b) * 0x1000193)
         key = bytearray(16)
-        for i in range(16):
-            b = data[i % n]; u = u32(u * 0x1f + (i ^ b)); key[i] = CHARSET[u % len(CHARSET)]
+        for i in range(16): b = data[i % n]; u = u32(u * 0x1f + (i ^ b)); key[i] = CHARSET[u % len(CHARSET)]
         u = 0x811c832a
         for b in data: u = u32((u ^ b) * 0x1000193)
-        iv = bytearray(16); idx = 0; acc = 0
-        while idx != 0x30:
-            b = data[idx % n]; u = u32(u * 0x1d + (acc ^ b)); iv[idx // 3] = CHARSET[u % len(CHARSET)]
-            idx += 3; acc = u32(acc + 7)
+        iv = bytearray(16); idx = acc = 0
+        while idx != 0x30: b = data[idx % n]; u = u32(u * 0x1d + (acc ^ b)); iv[idx // 3] = CHARSET[u % len(CHARSET)]; idx += 3; acc = u32(acc + 7)
         return bytes(key), bytes(iv)
 
     def _decrypt_data(self, b64_data: str):
@@ -55,7 +47,7 @@ class SportzxClient:
 
     def _fetch_and_decrypt(self, url: str):
         try:
-            r = self.session.get(url, timeout=self.timeout)
+            r = self.session.get(url, timeout=20)
             decrypted = self._decrypt_data(r.json().get("data", ""))
             return json.loads(decrypted) if decrypted else {}
         except: return {}
@@ -68,32 +60,9 @@ class SportzxClient:
             return r2.json().get("entries", {}).get("api_url")
         except: return None
 
-    def _apply_rules(self, data):
-        for event in data:
-            if "formats" in event: del event["formats"]
-            for channel in event.get("channels_data", []):
-                # ১. টাইটেল পরিবর্তন
-                title = channel.get("title", "").replace("Sportzx", "SPORTIFy").replace("SPX", "SPY")
-                channel["title"] = title
-                
-                # ২. এপিআই কী ডিকোড করা (Base64 Fix)
-                api_val = channel.get("api", "")
-                if api_val and len(api_val) > 20:
-                    try:
-                        decoded = base64.b64decode(api_val).decode('utf-8')
-                        if ":" in decoded: channel["api"] = decoded
-                    except: pass
-
-                # ৩. লিঙ্ক প্রসেসিং (কোনো কাটছাঁট হবে না)
-                link = channel.get("link", "")
-                if link == REPLACE_STREAM: link = NEW_STREAM
-                channel["link"] = link
-        return data
-
     def get_json_data(self):
         api_url = self._get_api_url()
         if not api_url: return []
-
         raw_events = self._fetch_and_decrypt(f"{api_url.rstrip('/')}/events.json")
         if not isinstance(raw_events, list): return []
 
@@ -102,60 +71,64 @@ class SportzxClient:
             if eid:
                 event["channels_data"] = self._fetch_and_decrypt(f"{api_url.rstrip('/')}/channels/{eid}.json")
 
-        # --- স্মার্ট ম্যানুয়াল ওভাররাইড ও ক্লিনআপ (PSL ফিক্স) ---
+        # --- 🔄 শক্তিশালী মার্জ ও অটো-ক্লিনআপ লজিক ---
         manual_file = "manual_data.json"
         if os.path.exists(manual_file):
             try:
-                with open(manual_file, "r") as f:
-                    manual = json.load(f)
-                
+                with open(manual_file, "r") as f: manual = json.load(f)
                 manual_events = manual.get("manual_events", [])
+                delete_ids = [str(d) for d in manual.get("delete", [])]
                 live_ids = [str(ev.get("id")) for ev in raw_events]
-                
-                # শুধুমাত্র সেই এডিটগুলো রাখবে যেগুলোর আইডি এখনো লাইভ এপিআই-তে আছে
-                updated_manual_events = []
+
+                # ১. অরিজিনাল ডাটা থেকে ডিলিট করা আইডিগুলো বাদ দেওয়া
+                raw_events = [ev for ev in raw_events if str(ev.get("id")) not in delete_ids]
+
+                # ২. ম্যানুয়াল এডিটগুলো লাইভ ডাটাতে পুশ করা
                 for m_ev in manual_events:
                     m_id = str(m_ev.get("id"))
                     if m_id in live_ids:
-                        # অরিজিনাল ডাটা লিস্টে আপনার এডিট করা ডাটা বসিয়ে দেওয়া
                         for i, ev in enumerate(raw_events):
                             if str(ev.get("id")) == m_id:
-                                raw_events[i] = m_ev
-                        updated_manual_events.append(m_ev)
+                                raw_events[i] = m_ev # রিপ্লেস উইথ আপনার এডিট
                 
-                # ডিলিট লজিক
-                delete_ids = manual.get("delete", [])
-                raw_events = [ev for ev in raw_events if str(ev.get("id")) not in [str(d) for d in delete_ids]]
-                
-                # ম্যানুয়াল ফাইলটি ক্লিন করে আবার সেভ করা (যাতে পুরনো আইডি মুছে যায়)
-                manual["manual_events"] = updated_manual_events
+                # ৩. জম্বি ক্লিনার: যে ইভেন্ট লাইভ ডাটাতে নেই সেটি ম্যানুয়াল ফাইল থেকেও মুছে যাবে
+                manual["manual_events"] = [m for m in manual_events if str(m.get("id")) in live_ids]
                 with open(manual_file, "w") as f:
                     json.dump(manual, f, indent=4)
                     
-            except Exception as e:
-                print(f"Error syncing manual edits: {e}")
+            except Exception as e: print(f"Manual Sync Error: {e}")
 
-        return self._apply_rules(raw_events)
-
+        # --- 🛠️ ফাইনাল রুলস (টাইটেল, কী ডিকোডিং এবং ফুল লিঙ্ক) ---
+        for event in raw_events:
+            if "formats" in event: del event["formats"]
+            channels = event.get("channels_data", [])
+            if isinstance(channels, list):
+                for ch in channels:
+                    ch["title"] = ch.get("title", "").replace("Sportzx", "SPORTIFy").replace("SPX", "SPY")
+                    # API Key Base64 থাকলে ডিকোড করা
+                    api_val = ch.get("api", "")
+                    if api_val and len(api_val) > 20:
+                        try:
+                            decoded = base64.b64decode(api_val).decode('utf-8')
+                            if ":" in decoded: ch["api"] = decoded
+                        except: pass
+                    # লিঙ্ক হুবহু রাখা (কোনো স্প্লিট বা কাট হবে না)
+                    if ch.get("link") == REPLACE_STREAM: ch["link"] = NEW_STREAM
+            
+        return raw_events
 
 def encrypt_json(data):
     ist_now = (datetime.utcnow() + timedelta(hours=5, minutes=30)).strftime("%I:%M:%S %p %d-%m-%Y")
-    wrapped_data = {
-        "AUTHOR": "iVan_FLUx",
-        "TELEGRAM": "https://t.me/iVan_flux",
-        "Last update time": ist_now,
-        "events": data
-    }
-    key = AES_SECRET[:32]
-    cipher = AES.new(key, AES.MODE_EAX)
+    wrapped_data = {"AUTHOR": "iVan_FLUx", "TELEGRAM": "https://t.me/iVan_flux", "Last update time": ist_now, "events": data}
+    key = AES_SECRET[:32]; cipher = AES.new(key, AES.MODE_EAX)
     ciphertext, tag = cipher.encrypt_and_digest(json.dumps(wrapped_data).encode())
     return base64.b64encode(cipher.nonce + tag + ciphertext).decode()
 
 if __name__ == "__main__":
     client = SportzxClient()
-    data = client.get_json_data()
-    if data:
-        final_enc = encrypt_json(data)
+    final_data = client.get_json_data()
+    if final_data:
+        encrypted = encrypt_json(final_data)
         with open("Sportzx.json", "w", encoding="utf-8") as f:
-            json.dump({"data": final_enc}, f, indent=4)
-        print("Final Sync & Cleanup Successful!")
+            json.dump({"data": encrypted}, f, indent=4)
+        print("Done! Check Sportzx.json and manual_data.json cleanup.")
