@@ -71,17 +71,14 @@ class SportzxClient:
     def _apply_rules(self, data):
         for event in data:
             if "formats" in event: del event["formats"]
-            # ইভেন্ট টাইটেল রিপ্লেস
             if "title" in event:
                 event["title"] = event["title"].replace("Sportzx", "SPORTIFy").replace("SportzX", "SPORTIFy")
 
             for channel in event.get("channels_data", []):
-                # চ্যানেল টাইটেল রিপ্লেস (বড় হাতের X সহ সব ভেরিয়েশন)
                 title = channel.get("title", "")
                 title = title.replace("Sportzx", "SPORTIFy").replace("SportzX", "SPORTIFy").replace("SPX", "SPY")
                 channel["title"] = title
 
-                # API Key Base64 ডিকোডিং
                 api_val = channel.get("api", "")
                 if api_val and len(api_val) > 20:
                     try:
@@ -89,7 +86,6 @@ class SportzxClient:
                         if ":" in decoded: channel["api"] = decoded
                     except: pass
 
-                # লিঙ্ক প্রসেসিং (raw লিঙ্ক, কোনো কাটাকুটি হবে না)
                 link = channel.get("link", "")
                 if link == REPLACE_STREAM: link = NEW_STREAM
                 channel["link"] = link
@@ -101,16 +97,28 @@ class SportzxClient:
         raw_events = self._fetch_and_decrypt(f"{api_url.rstrip('/')}/events.json")
         if not isinstance(raw_events, list): return []
 
-        for event in raw_events:
-            eid = event.get("id")
-            if eid:
-                event["channels_data"] = self._fetch_and_decrypt(f"{api_url.rstrip('/')}/channels/{eid}.json")
-
-        # --- 🔄 EndTime অটো-ডিলিট ও মার্জ লজিক ---
+        # --- ১. ম্যানুয়াল ফাইল থেকে ম্যাপিং ও ওভাররাইড লোড করা ---
         manual_file = "manual_data.json"
+        manual = {}
+        id_mapping = {}
         if os.path.exists(manual_file):
             try:
-                with open(manual_file, "r") as f: manual = json.load(f)
+                with open(manual_file, "r") as f:
+                    manual = json.load(f)
+                    id_mapping = manual.get("id_mapping", {})
+            except: pass
+
+        # --- ২. ইভেন্টের চ্যানেল ডাটা ফেচ করা (ম্যাপিং সাপোর্টসহ) ---
+        for event in raw_events:
+            eid = str(event.get("id"))
+            # যদি ম্যাপিং এ নতুন আইডি থাকে তবে সেটি ব্যবহার হবে
+            fetch_id = id_mapping.get(eid, eid)
+            if fetch_id:
+                event["channels_data"] = self._fetch_and_decrypt(f"{api_url.rstrip('/')}/channels/{fetch_id}.json")
+
+        # --- ৩. EndTime অটো-ডিলিট ও মার্জ লজিক ---
+        if manual:
+            try:
                 manual_events = manual.get("manual_events", [])
                 now_utc = datetime.utcnow()
                 cleaned_manual = []
@@ -122,22 +130,28 @@ class SportzxClient:
                         if now_utc < end_time_dt: cleaned_manual.append(m_ev)
                     except: cleaned_manual.append(m_ev)
 
-                # মার্জিং
+                # ডাটা মার্জ করা
                 live_ids = [str(ev.get("id")) for ev in raw_events]
                 for m_ev in cleaned_manual:
                     m_id = str(m_ev.get("id"))
                     if m_id in live_ids:
                         for i, ev in enumerate(raw_events):
                             if str(ev.get("id")) == m_id: raw_events[i] = m_ev
-                    else: raw_events.append(m_ev)
+                    else:
+                        raw_events.append(m_ev)
 
                 # ডিলিট লিস্ট ফিল্টার
                 delete_ids = [str(d) for d in manual.get("delete", [])]
                 raw_events = [ev for ev in raw_events if str(ev.get("id")) not in delete_ids]
 
-                # ম্যানুয়াল ফাইল আপডেট (GitHub Persist এর জন্য)
+                # ৪. আইডি ম্যাপিং ক্লিনআপ (লাইভ লিস্টে না থাকলে ম্যাপিং ডিলিট)
+                new_id_mapping = {k: v for k, v in id_mapping.items() if k in live_ids}
+                
+                # ৫. ম্যানুয়াল ফাইল আপডেট করা
                 manual["manual_events"] = cleaned_manual
-                with open(manual_file, "w") as f: json.dump(manual, f, indent=4)
+                manual["id_mapping"] = new_id_mapping
+                with open(manual_file, "w") as f:
+                    json.dump(manual, f, indent=4)
             except: pass
 
         return self._apply_rules(raw_events)
@@ -156,4 +170,4 @@ if __name__ == "__main__":
     if data:
         with open("Sportzx.json", "w", encoding="utf-8") as f:
             json.dump({"data": encrypt_json(data)}, f, indent=4)
-        print("Everything Fixed & Synced Successfully!")
+        print("Everything Fixed, Mapped & Synced Successfully!")
