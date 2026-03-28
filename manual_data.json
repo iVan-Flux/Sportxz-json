@@ -38,7 +38,57 @@
             },
             "adsLimit": "17",
             "publish": "1",
-            "channels_data": []
+            "channels_data": [
+                {
+                    "title": "WILLOW HD",
+                    "name": "WILLOW HD",
+                    "link": "https://a201aivottlinear-a.akamaihd.net/OTTB/iad-nitro/live/clients/dash/enc/kksbtkclxn/out/v1/75ba74c3fa354297aa9327a31dfeb4d5/cenc.mpd",
+                    "api": "4a3d50bef26a7b2acebfb719a2d02476:f94f4e94b57e18e48450231b20222c0c",
+                    "type": "1"
+                },
+                {
+                    "title": "STAR HINDI (IN)",
+                    "name": "STAR HINDI (IN)",
+                    "link": "https://livetv.hotstar.com/mp1/gec-india-1540065788/fa6a4f0005ef4f90ab24484d165b0aaf/index.mpd?|cookie=hdntl=exp=1774763750~acl=%2f*~id=d7828cfbfc2fe7f0bae649921447adbd~data=hdntl~hmac=5d4969603847e329355c7cdce346fb3c33f6a1333c0468c13f432ec9bcd380df&User-agent=Hotstar%3Bin.startv.hotstar%2F25.02.24.8.11169+%28Android%2F15%29&drmScheme=clearkey&drmLicense=81872faa1d6b45fa9045cdeb2e310000:9b88168e61274587a471962c46b94675",
+                    "api": "",
+                    "type": "1"
+                },
+                {
+                    "title": "STAR ENGLISH (IND)",
+                    "name": "STAR ENGLISH (IND)",
+                    "link": "https://livetv.hotstar.com/mp1/gec-india-1540065782/fce958099ca84fc3b980e651a4a668a8/index.mpd?|cookie=hdntl=exp=1774763729~acl=%2f*~id=7d6891e3ae96ad66e5e809e2228b2363~data=hdntl~hmac=656899b4f5d3278f4288d6f2745c05ffd9647dda17b622c3cde3c7829acc5012&User-agent=Hotstar%3Bin.startv.hotstar%2F25.02.24.8.11169+%28Android%2F15%29&drmScheme=clearkey&drmLicense=b7cdde012ce04e90a08b90622e020000:13603245acab444faef6cab5198de55f",
+                    "api": "",
+                    "type": "1"
+                },
+                {
+                    "title": "STAR ENGLISH 2 (IND)",
+                    "name": "STAR ENGLISH 2 (IND)",
+                    "link": "https://livetv.hotstar.com/mp2/gec-india-1540065785/a00717b1324f45eb814eec9e48a12db8/index.mpd?|cookie=hdntl=exp=1774763756~acl=%2f*~id=1cbc859f233e71458a6c5274e63018f1~data=hdntl~hmac=5355aea23a75a01ab00ecc030bf58146160540a277770deeddd9caadad82f5ec&User-agent=Hotstar%3Bin.startv.hotstar%2F25.02.24.8.11169+%28Android%2F15%29&drmScheme=clearkey&drmLicense=9dacc80134404c34ba184022c28d0000:982183fb4d9449c995859b7cff512092",
+                    "api": "",
+                    "type": "1"
+                },
+                {
+                    "title": "STAR HINDI 2 (IND)",
+                    "name": "STAR HINDI 2 (IND)",
+                    "link": "https://jcevents.hotstar.com/bpk-tv/2c7182c8e6a22cfa6ebc02bbc9ed6dd0/Fallback/2c7182c8e6a22cfa6ebc02bbc9ed6dd0.m3u8?|cookie=hdntl=exp=1774763740~acl=%2f*~id=e6d271ae4908f40afa2ceaa22b1f1596~data=hdntl~hmac=810cfbd160d3deeaa5c64cf138cbc71289a5ec929c2f1f3cccb19e08801751d9&User-agent=Hotstar%3Bin.startv.hotstar%2F25.02.24.8.11169+%28Android%2F15%29&origin=https://www.hotstar.com&Referer=https://www.hotstar.com/",
+                    "api": "",
+                    "type": "1"
+                },
+                {
+                    "title": "STAR TAMIL (IND)",
+                    "name": "STAR TAMIL (IND)",
+                    "link": "https://jcevents.hotstar.com/bpk-tv/4db6f833701e78ae4443cb268020f03b/Fallback/4db6f833701e78ae4443cb268020f03b.m3u8?|cookie=hdntl=exp=1774763740~acl=%2f*~id=e6d271ae4908f40afa2ceaa22b1f1596~data=hdntl~hmac=810cfbd160d3deeaa5c64cf138cbc71289a5ec929c2f1f3cccb19e08801751d9&User-agent=Hotstar%3Bin.startv.hotstar%2F25.02.24.8.11169+%28Android%2F15%29&origin=https://www.hotstar.com&Referer=https://www.hotstar.com/",
+                    "api": "",
+                    "type": "1"
+                },
+                {
+                    "title": "STAR TELEGU (IND)",
+                    "name": "STAR TELEGU (IND)",
+                    "link": "https://jcevents.hotstar.com/bpk-tv/034d1fb94cae87294a06f4dc266084b9/Fallback/034d1fb94cae87294a06f4dc266084b9.m3u8?|cookie=hdntl=exp=1774763740~acl=%2f*~id=e6d271ae4908f40afa2ceaa22b1f1596~data=hdntl~hmac=810cfbd160d3deeaa5c64cf138cbc71289a5ec929c2f1f3cccb19e08801751d9&User-agent=Hotstar%3Bin.startv.hotstar%2F25.02.24.8.11169+%28Android%2F15%29&origin=https://www.hotstar.com&Referer=https://www.hotstar.com/",
+                    "api": "",
+                    "type": "1"
+                }
+            ]
         }
     ]
 }
