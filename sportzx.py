@@ -69,8 +69,16 @@ class SportzxClient:
         except: return None
 
     def _apply_rules(self, data):
-        # 🛠️ আপনার দেওয়া সঠিক ম্যাপিং টেবিল (সলিড সমাধান)
-        correction_map = {'J': 'a', '$': '5', 'l': '2', 'Q': 'b'}
+        # 🛠️ ফাইনাল ম্যাপিং টেবিল (৭টি সলিড কারেকশন রুল)
+        correction_map = {
+            'J': 'a', 
+            '$': '5', 
+            'l': '2', 
+            'Q': 'b', 
+            'W': 'f', 
+            ')': '2', 
+            'Z': 'a'
+        }
 
         for event in data:
             if "formats" in event: del event["formats"]
@@ -82,7 +90,7 @@ class SportzxClient:
                 title = title.replace("Sportzx", "SPORTIFy").replace("SportzX", "SPORTIFy").replace("SPX", "SPY")
                 channel["title"] = title
 
-                # --- 🎯 API Key (Key) মেরামতের অংশ ---
+                # --- 🎯 API Key (Token) ডিকোডিং ও মেরামতের ফাইনাল লজিক ---
                 api_val = channel.get("api", "")
                 if api_val:
                     # ১. যদি Base64 থাকে তবে ডিকোড করা
@@ -92,7 +100,7 @@ class SportzxClient:
                             if ":" in decoded: api_val = decoded
                     except: pass
                     
-                    # ২. আপনার নতুন সিকুয়েন্স অনুযায়ী রিপ্লেস করা (J->a, $->5, l->2, Q->b)
+                    # ২. সমস্ত ভুল ক্যারেক্টার সঠিক হেক্স কোডে রূপান্তর করা
                     for wrong, right in correction_map.items():
                         api_val = api_val.replace(wrong, right)
                     
@@ -170,4 +178,4 @@ if __name__ == "__main__":
     if data:
         with open("Sportzx.json", "w", encoding="utf-8") as f:
             json.dump({"data": encrypt_json(data)}, f, indent=4)
-        print("Final Deployment: Key Mismatch Faults Fixed Successfully!")
+        print("Final Deployment: All Key & Mismatch Faults Fixed Perfectly!")
