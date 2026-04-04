@@ -15,7 +15,7 @@ PACKAGE_NAME = os.getenv("PACKAGE_NAME")
 AES_SECRET = os.getenv("AES_SECRET").encode()
 
 REPLACE_STREAM = "https://video.twimg.com/amplify_video/1919602814160125952/pl/t5p2RHLI21i-hXga.m3u8?variant_version=1&tag=14"
-NEW_STREAM = "https://raw.githubusercontent.com/TOUFIK2256/Feildfever/main/VN20251203_010347.mp4"
+NEW_STREAM = "https://fallback-video.ivan-flux.workers.dev/video/index.m3u8"
 
 
 class SportzxClient:
