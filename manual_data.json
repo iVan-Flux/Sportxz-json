@@ -1,26 +1,5 @@
 {
-    "manual_events": [
-        {
-            "id": "372",
-            "title": "Bangladesh W vs Sri Lanka W",
-            "image": "o",
-            "cat": "Cricket",
-            "eventInfo": {
-                "teamA": "BAN-W",
-                "teamB": "SL-W",
-                "teamAFlag": "https://img.sofascore.com/api/v1/team/187809/image",
-                "teamBFlag": "https://img.sofascore.com/api/v1/team/187806/image",
-                "eventName": "Bangladesh W vs Sri Lanka W",
-                "eventType": "null",
-                "isHot": "0",
-                "startTime": "2026/04/28 07:30:00 +0000",
-                "endTime": "2026/04/28 11:00:00 +0000"
-            },
-            "adsLimit": "9",
-            "publish": "1",
-            "channels_data": []
-        }
-    ],
+    "manual_events": [],
     "delete": [],
     "id_mapping": {
         "366": "366e",
