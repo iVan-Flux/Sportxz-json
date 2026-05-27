@@ -67,15 +67,8 @@
                 {
                     "title": "SKY SPORTS FHD",
                     "name": "SKY SPORTS FHD",
-                    "link": "https://dice-live-oc.akamaized.net/hdntl=exp=1779876402~acl=%2F*~id=1848ec4c-1940-4ed2-83cf-04fe245aa7b6~data=hdntl,aXA9NTcuMTUxLjEyMS4xOTMmZXhwPTE3Nzk3OTAwMzImZWlkPTk2MjYwOCZvaWQ9MTA4JnR5cGU9Vk9EJnVpZD1vZkNEeFJ8Yjk2MWQxY2QtZGNjZS00YTlhLTg3NGYtZDViYzMxZjNmZmM1JmNpZD1kY2Uuc3B1cnMmcHQ9bnVsbA~hmac=6c7d90843d2be2a7fb6a44feae9631b96d60f37b53a6a4732c4b56f73adc1bae/dash/live/2093710/219026-321025/manifest-d.mpd",
+                    "link": "https://dice-live-oc.akamaized.net/exp=1779964324~acl=%2f*~id=9a62c341-f5b7-4e27-bcc0-0d2e4cf56d19~data=hdntl,aXA9MzguMTM3LjUwLjg0JmV4cD0xNzc5ODc3OTUzJmVpZD04Mzc5MTcmb2lkPTIyJnR5cGU9Vk9EJnVpZD1udWxsJmNpZD1udWxsJnB0PW51bGw~hmac=edbd1435954e4efc123ba6005840759c70409aa19c4cd6f965657bff7cfffa39/dash/live/2093710/219026-321025/manifest-d.mpd",
                     "api": "aefc2c8d1c8840f1b6981f856c9269ba:cf8ea114c45b4d6596b2748258ab74d6",
-                    "type": "1"
-                },
-                {
-                    "api": "89c5df2d78115f56a99366a56da51f9b:b30f0983a30d8075048be965y9b\u0017f671",
-                    "link": "https://dck1-ac-live.cdn.indazn.com/out/v1/761f422bb93edb7b/96c681081ef542b1bd4bdf94806e5a06/index.mpd",
-                    "logo": "",
-                    "title": "KAYO HINDI FHD",
                     "type": "1"
                 },
                 {
@@ -88,8 +81,22 @@
                 {
                     "title": "SKY SPORTS 4k",
                     "name": "SKY SPORTS 4k",
-                    "link": "https://dice-live-oc.akamaized.net/hdntl=exp=1779876398~acl=%2F*~id=84184cc6-38e7-4b22-8aa3-fb6121c0ee7f~data=hdntl,aXA9NTcuMTUxLjEyMS4xOTMmZXhwPTE3Nzk3OTAwMjgmZWlkPTk2MjY2MiZvaWQ9MTA4JnR5cGU9Vk9EJnVpZD1vZkNEeFJ8Yjk2MWQxY2QtZGNjZS00YTlhLTg3NGYtZDViYzMxZjNmZmM1JmNpZD1kY2Uuc3B1cnMmcHQ9bnVsbA~hmac=2ecc59ba8ccc64c03767e8ca69347fc118e343e60233f2e9db1c581ff63181af/dash/live/2093666/294921-318514/manifest-d.mpd",
+                    "link": "https://dice-live-oc.akamaized.net/exp=1779964324~acl=%2f*~id=9a62c341-f5b7-4e27-bcc0-0d2e4cf56d19~data=hdntl,aXA9MzguMTM3LjUwLjg0JmV4cD0xNzc5ODc3OTUzJmVpZD04Mzc5MTcmb2lkPTIyJnR5cGU9Vk9EJnVpZD1udWxsJmNpZD1udWxsJnB0PW51bGw~hmac=edbd1435954e4efc123ba6005840759c70409aa19c4cd6f965657bff7cfffa39/dash/live/2093666/294921-318514/manifest-d.mpd",
                     "api": "4d346b1d1ae64d4a800409cffa14983e:208c972bd2da4359ac94e6944fe378b6",
+                    "type": "1"
+                },
+                {
+                    "api": "89c5df2d78115f56a99366a56da51f9b:b30f0983a30d8075048be965y9b\u0017f671",
+                    "link": "https://dck1-ac-live.cdn.indazn.com/out/v1/761f422bb93edb7b/96c681081ef542b1bd4bdf94806e5a06/index.mpd",
+                    "logo": "",
+                    "title": "KAYO HINDI FHD",
+                    "type": "1"
+                },
+                {
+                    "title": "WILLOW HD [ALT]",
+                    "name": "WILLOW HD [ALT]",
+                    "link": "https://a57live-pv-ta-amazon.akamaized.net/iad-nitro/live/clients/dash/enc/2gvz3ny1qt/out/v1/7f41f2d7317249de95ed9dfa4103bde4/cenc.mpd",
+                    "api": "688d8c827ef18b5258ad18c1173f673b:d26b95548e8812e72e3706b8be5030bc",
                     "type": "1"
                 },
                 {
