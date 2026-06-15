@@ -1,8 +1,5 @@
 {
     "manual_events": [],
     "delete": [],
-    "id_mapping": {
-        "50002": "50002",
-        "50025": "366e"
-    }
+    "id_mapping": {}
 }
